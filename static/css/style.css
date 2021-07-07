@@ -1,0 +1,74 @@
+body {
+    height: 80vh;
+    background-image: url('/static/images/greyspoons.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+/*----------------------------------- Home - Navbar*/
+.navbar {
+    background-color: rgba(0, 0, 0, 0.801);
+}
+
+.navbar-brand {
+    color: bisque;
+    margin-left: 10px;
+    padding: 5px 10px;
+}
+
+.navbar-brand:hover {
+    color: bisque;
+}
+
+.login-btn {
+    text-decoration: none;
+    color: rgb(40, 167, 69);
+    border: 1px solid rgb(40, 167, 69);
+    border-radius: 30px;
+}
+
+.login-btn:hover {
+    text-decoration: none;
+    color: rgba(40, 167, 70, 0.808);
+    border-color: rgba(40, 167, 70, 0.808);
+
+}
+
+.monthly-btn {
+    color: wheat;
+}
+
+/*----------------------------------- Home - Banner*/
+.banner-container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.banner {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+    position: absolute;
+    top: 20%;
+    padding: 20px 0;
+    color: whitesmoke;
+}
+
+.banner h1 {
+    font-size: 3rem;
+}
+
+.banner-btns {
+    text-align: center;
+    position: relative;
+    top: 40%;
+}
+
+.banner-btns a {
+    padding-right: 40px;
+    padding-left: 40px;
+    border-radius: 30px;
+}
+
+
