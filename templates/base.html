@@ -12,8 +12,27 @@
     <title> {% block title %}{% endblock %} </title>
 </head>
 <body>
-    
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+        <a class="navbar-brand" href="#">RecipeClub</a>
+            
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item mr-4">
+                        <a class="nav-link pl-4 pr-4" href=" {{url_for('index')}} ">Home</a>
+                    </li>
+                    <li class="nav-item mr-4">
+                        <a class="nav-link pl-4 pr-4" href=" {{url_for('login')}} ">Log In</a>
+                    </li>
+                    <li class="nav-item mr-4">
+                        <a class="nav-link pl-4 pr-4" href="#">Register</a>
+                    </li>
+                </ul>
+            </div>
+    </nav>
     {% block content %}
     {% endblock%}
 
