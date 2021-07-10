@@ -94,3 +94,10 @@
 .login-register a {
     margin: 10px 0 20px 0;
 }
+
+
+/*----------------------------------- Recipes Page */
+
+.recipes-heading {
+    text-align: center;
+}
