@@ -41,6 +41,7 @@ def register():
             session["user"] = request.form.get('email')
             session["alert"] = "alert alert-success"
             flash('You have successfully registered!')
+            return redirect(url_for('allrecipes', name=session["user"] ))
         else:
             session["alert"] = "alert alert-danger"
             flash('The passwords you entered do not match. Please try again!')
@@ -48,9 +49,29 @@ def register():
 
     return render_template("register.html")
 
-@app.route("/login")
+@app.route("/login", methods=["POST", "GET"])
 def login():
+    if request.method == "POST":
+        # Check if user exists
+        check_user = mongo.db.users.find_one({"email": request.form.get('email').lower()})
+        # if user exists check if password matches 
+        if check_user:
+            if check_password_hash(check_user["password"], request.form.get("password")):
+                session["user"] = request.form.get("email").lower()
+                session["alert"] = "alert alert-success"
+                flash("You have been logged in!")
+                return redirect(url_for("allrecipes", name=session["user"]))
+            else:
+                session["alert"] = "alert alert-danger"
+                flash("Incorrect Username/Password. Try again.")
+                return redirect(url_for("login"))
+        else:
+            session["alert"] = "alert alert-danger"
+            flash("Incorrect Username/Password. Try again.")
+            return redirect(url_for("login"))
+
     return render_template("login.html")
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
