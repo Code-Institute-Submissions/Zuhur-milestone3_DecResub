@@ -3,6 +3,7 @@ from flask import Flask, render_template, url_for, session, request, redirect, f
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime
 if os.path.exists("env.py"):
     import env
 
@@ -41,7 +42,7 @@ def register():
             session["user"] = request.form.get('email')
             session["alert"] = "alert alert-success"
             flash('You have successfully registered!')
-            return redirect(url_for('allrecipes', name=session["user"] ))
+            return redirect(url_for('allrecipes'))
         else:
             session["alert"] = "alert alert-danger"
             flash('The passwords you entered do not match. Please try again!')
@@ -60,7 +61,7 @@ def login():
                 session["user"] = request.form.get("email").lower()
                 session["alert"] = "alert alert-success"
                 flash("You have been logged in!")
-                return redirect(url_for("allrecipes", name=session["user"]))
+                return redirect(url_for("allrecipes"))
             else:
                 session["alert"] = "alert alert-danger"
                 flash("Incorrect Username/Password. Try again.")
@@ -72,8 +73,8 @@ def login():
 
     return render_template("login.html")
 
-@app.route("/allrecipes/<name>")
-def allrecipes(name):
+@app.route("/allrecipes")
+def allrecipes():
     name = mongo.db.users.find_one({"email": session["user"]})["name"]
     if session["user"]:
         return render_template('allrecipes.html', name=name)
@@ -82,10 +83,44 @@ def allrecipes(name):
 @app.route("/logout")
 def logout():
     # remove users session
-    session['alert'] = "alert alert-success"
+    session['alert'] = "alert alert-danger"
     flash("You have been logged out!")
     session.pop("user")
     return redirect(url_for('login'))
+
+
+@app.route("/profile")
+def profile(name):
+    return render_template('profile.html', name=name)
+    
+    
+@app.route("/create_recipe", methods=["GET", "POST"])
+def create_recipe():
+    if request.method == "POST":
+        if "recipe_image" in request.files:
+            recipe_image = request.files['recipe_image']
+            if bool(recipe_image):
+                mongo.save_file(recipe_image.filename, recipe_image)
+
+            ingredients = {
+                "recipe_name": request.form.get('recipe_name').capitalize(),
+                "prep_time": request.form.get('prep_time') + ' ' + request.form.get('prep_unit'),
+                "cook_time": request.form.get('cook_time') + ' ' + request.form.get('cook_unit'),
+                "serves": request.form.get('serves'),
+                "ingredients": request.form.get('ingredients').replace('\r', '').split('\n'),
+                "instructions": request.form.get('instructions').replace('\r', '').split('\n'),
+                "author": session["user"],
+                "recipe_image": recipe_image.filename,
+                "is_private": bool(request.form.get('is_private')),
+                "created": datetime.now().strftime("%m-%d-%Y")
+            }
+            mongo.db.recipe.insert(ingredients)
+            session['alert'] = "alert alert-success"
+            flash("You have successully created a recipe!") 
+            return redirect(url_for('allrecipes'))
+    
+    return render_template("create_recipe.html")
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
