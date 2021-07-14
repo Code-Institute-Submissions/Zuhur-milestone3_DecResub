@@ -21,9 +21,25 @@
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav ml-auto">
+                    {% if session['user']%}
+                    <li class="nav-item mr-4">
+                        <a class="nav-link pl-4 pr-4" href=" {{url_for('allrecipes', name=session['user'])}} ">All Recipes</a>
+                    </li>
+                    <li class="nav-item mr-4">
+                        <a class="nav-link pl-4 pr-4" href=" {{url_for('myrecipes.html')}} ">My Recipes</a>
+                    </li>
+                    <li class="nav-item mr-4">
+                        <a class="nav-link pl-4 pr-4" href=" {{url_for('create_recipe')}} ">Create Recipe</a>
+                    </li>
+                    <div class="dropdown-divider"></div>
+                    <li class="nav-item mr-4">
+                        <a class="nav-link pl-4 pr-4" href=" {{url_for('logout')}} ">Logout</a>
+                    </li>
+                    {% else %}
                     <li class="nav-item mr-4">
                         <a class="nav-link login-btn pl-4 pr-4" href="{{ url_for('login') }}">Log In</a>
                     </li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>
@@ -36,8 +52,9 @@
             <p>Register to get access to numerous recipes and get a chance to win <strong><em>Recipe Of the Month!</em></strong></p>
         </div>   
         <div class="banner-btns">
-            <a class="btn btn-danger btn-lg register-btn" href="{{ url_for('register') }}" role="button">Register</a>
+            <a class="btn btn-danger btn-lg register-btn" href="{{ url_for('register')}}" role="button">Register</a>
         </div> 
     </div>
+
 </body>
 </html>
