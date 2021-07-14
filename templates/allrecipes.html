@@ -1,5 +1,31 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1 class="recipes-heading"> Welcome, {{ name.capitalize }} </h1>
+    <section>
+        <div class="container recipes-container">
+            <div class="allrecipes_header text-center">
+                <h1 class="recipes-heading"> All Recipes </h1>
+            </div>
+            <div class="row">
+                {% for recipe in recipes %}
+                    {% if recipe.is_private == False  %}
+                        <div class="col-6 col-md-3 mt-3">
+                            <div class="card card-recipe">
+                                <img class="card-img-top" src=" {{ url_for('img_file', filename=recipe.recipe_image) }}" alt="Recipe image">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title"> {{ recipe.recipe_name.capitalize() }} </h5>
+                                    <p><em class="card-text">By: </em></p>
+                                    <a href="" class="text-right">Go to recipe</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %} 
+                {% endfor %}
+                
+
+            </div>
+        </div>
+    </section>
+    
+
 {% endblock %}

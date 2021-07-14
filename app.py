@@ -40,6 +40,7 @@ def register():
             mongo.db.users.insert_one(register)
             # session cookie
             session["user"] = request.form.get('email')
+            session["name"] = request.form.get('name')
             session["alert"] = "alert alert-success"
             flash('You have successfully registered!')
             return redirect(url_for('allrecipes'))
@@ -59,6 +60,7 @@ def login():
         if check_user:
             if check_password_hash(check_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("email").lower()
+                session["name"] = mongo.db.users.find_one({"email": session["user"]})["name"]
                 session["alert"] = "alert alert-success"
                 flash("You have been logged in!")
                 return redirect(url_for("allrecipes"))
@@ -73,12 +75,6 @@ def login():
 
     return render_template("login.html")
 
-@app.route("/allrecipes")
-def allrecipes():
-    name = mongo.db.users.find_one({"email": session["user"]})["name"]
-    if session["user"]:
-        return render_template('allrecipes.html', name=name)
-    return redirect('login')
 
 @app.route("/logout")
 def logout():
@@ -120,6 +116,18 @@ def create_recipe():
             return redirect(url_for('allrecipes'))
     
     return render_template("create_recipe.html")
+
+@app.route("/allrecipes")
+def allrecipes():
+    if session["user"]:
+        recipes = list(mongo.db.recipe.find())
+        return render_template('allrecipes.html', recipes=recipes)
+    
+    return redirect('login')
+
+@app.route('/img_file/<filename>')
+def img_file(filename):
+    return mongo.send_file(filename)
 
 
 if __name__ == "__main__":
