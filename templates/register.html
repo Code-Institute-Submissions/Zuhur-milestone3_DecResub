@@ -5,9 +5,9 @@
 {% endblock %}
 
 {% block content%}
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Register</h5>
+    <div class="card sign-card">
+        <div class="card-body sign-card-body">
+            <h5 class="card-title text-center">Register</h5>
             <form method="post" action="{{ url_for('register') }}">
                 <!-- Name -->
                 <div class="input-group mb-3">
@@ -40,7 +40,7 @@
                 <!-- Register/Log In -->
                 <div class="login-register">
                     <button class="btn btn-primary pl-4 pr-4" href="#" role="button">Register</button>
-                    <p><a href=" {{ url_for('login') }}">Log In</a></p>
+                    <p>Already have an account?<a href=" {{ url_for('login') }}">Log In</a></p>
                 </div>
             </form>
         </div>
