@@ -13,26 +13,55 @@
 </head>
 <body>
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
-        <a class="navbar-brand" href="#">RecipeClub</a>
+        <a class="navbar-brand" href=" {{url_for('index')}} ">RecipeClub</a>
             
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <i class="far fa-user-circle"></i>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav ml-auto">
+                    {% if session["user"] %}
+                        <li class="nav-item mr-4">
+                            <a class="nav-link pl-4 pr-4" href=" {{url_for('allrecipes')}} ">All Recipes</a>
+                        </li>
+                        <li class="nav-item mr-4">
+                            <a class="nav-link pl-4 pr-4" href=" #">My Recipes</a>
+                        </li>
+                        <li class="nav-item mr-4">
+                            <a class="nav-link pl-4 pr-4" href=" {{url_for('create_recipe')}} ">Create Recipe</a>
+                        </li>
+                        <div class="dropdown-divider"></div>
+                        <li class="nav-item mr-4">
+                            <a class="nav-link pl-4 pr-4" href=" {{url_for('logout')}} ">Logout</a>
+                        </li>
+
+                    {% else %}
                     <li class="nav-item mr-4">
                         <a class="nav-link pl-4 pr-4" href=" {{url_for('index')}} ">Home</a>
                     </li>
                     <li class="nav-item mr-4">
-                        <a class="nav-link pl-4 pr-4" href=" {{url_for('login')}} ">Log In</a>
+                        <a class="nav-link pl-4 pr-4" href=" {{url_for('register')}} ">Register</a>
                     </li>
                     <li class="nav-item mr-4">
-                        <a class="nav-link pl-4 pr-4" href="#">Register</a>
+                        <a class="nav-link pl-4 pr-4" href=" {{url_for('login')}} ">Login</a>
                     </li>
+                    {% endif %}
+
                 </ul>
             </div>
     </nav>
+    <section>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for msg in messages %}
+                    <div class= "{{ session['alert'] }}" role="alert">
+                        {{ msg }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </section>
     {% block content %}
     {% endblock%}
 
