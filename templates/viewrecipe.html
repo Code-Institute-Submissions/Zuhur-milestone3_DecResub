@@ -4,23 +4,24 @@
     <div class="container view-recipe-container">
         <div class="card view-card">
             <div class="card-body view-body">
-                <h1 class="card-title text-center"> {{ show_recipe.recipe_name }} </h1>
-                <h6 class="card-subtitle mb-2 text-muted text-center"><em> By: {{ show_recipe.author }} </em></h6>
-                
-                <div class="row view-info text-center">
-                    <div class="col-md-4 align-items-center">
-                        <p> <strong>Prep time: </strong> {{ show_recipe.prep_time }}</p>
-                    </div>
-                    <div class="col-md-4">
-                        <p> <strong>Cook time: </strong> {{ show_recipe.cook_time }}</p>
-                    </div>
-                    <div class="col-md-4">
-                        <p> <strong>Serves: </strong> {{ show_recipe.serves }}</p>
+                <div class="view-banner">
+                    <h1 class="card-title text-center"> {{ show_recipe.recipe_name }} </h1>
+                    <h6 class="card-subtitle mb-2 text-muted text-center"><em> By: {{ show_recipe.author }} </em></h6>
+                    
+                    <div class="row view-info text-center">
+                        <div class="col-md-4 align-items-center">
+                            <p> <strong>Prep time: </strong> {{ show_recipe.prep_time }}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p> <strong>Cook time: </strong> {{ show_recipe.cook_time }}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p> <strong>Serves: </strong> {{ show_recipe.serves }}</p>
+                        </div>
                     </div>
                 </div>
 
-
-                <div class="ingredients">
+                <div class="ingredients ing-dir">
                     <h3>Ingredients</h3>
                     <ul>
                         {% for ingredient in show_recipe.ingredients %}
@@ -29,7 +30,7 @@
                     </ul>
                 </div>
 
-                <div class="directions">
+                <div class="directions ing-dir">
                     <h3>Directions</h3>
                     <ol>
                         {% for ingredient in show_recipe.instructions %}
@@ -39,8 +40,8 @@
                 </div>
 
                 {% if show_recipe.author == session["user"] %}
-                    <div class="text-center">
-                        <a href="#" class="btn btn-primary btn-md" role="button" aria-pressed="true">Edit</a>
+                    <div class="text-center edit-delete">
+                        <a href=" {{ url_for('edit_recipe', recipe_id=show_recipe._id) }} " class="btn btn-primary btn-md" role="button" aria-pressed="true">Edit</a>
                         <a href="#" class="btn btn-secondary btn-md" role="button" aria-pressed="true">Delete</a>  
                     </div>
                 {% endif %}
