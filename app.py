@@ -125,9 +125,18 @@ def allrecipes():
     
     return redirect('login')
 
+
 @app.route('/img_file/<filename>')
 def img_file(filename):
     return mongo.send_file(filename)
+
+
+@app.route("/viewrecipe/<recipe_id>")
+def viewrecipe(recipe_id):
+    show_recipe = mongo.db.recipe.find_one({"_id": ObjectId(recipe_id)})
+    print(show_recipe)
+    return render_template('viewrecipe.html', show_recipe = show_recipe)
+
 
 
 if __name__ == "__main__":
