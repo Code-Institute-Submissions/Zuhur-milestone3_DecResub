@@ -137,6 +137,12 @@ def viewrecipe(recipe_id):
     print(show_recipe)
     return render_template('viewrecipe.html', show_recipe = show_recipe)
 
+@app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
+def edit_recipe(recipe_id):
+    recipe = mongo.db.recipe.find_one({"_id": ObjectId(recipe_id)})
+    print(recipe)
+    return render_template("edit_recipe.html", recipe=recipe)
+
 
 
 if __name__ == "__main__":
