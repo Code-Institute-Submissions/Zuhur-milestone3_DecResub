@@ -70,21 +70,18 @@
     border-radius: 30px;
 }
 
-/*----------------------------------- Login - Navbar*/
+/*----------------------------------- Register - Card*/
 
-/*----------------------------------- Login/Register - Card*/
-.card {
+
+/*----------------------------------- Login - Card*/
+.sign-card {
     width: 50%;
     margin: 100px auto;
 }
 
-.card-body {
+.sign-card-body {
     width: 50%;
     margin: 2em auto;
-}
-
-.card-title {
-    text-align: center;
 }
 
 .login-register {
@@ -98,6 +95,65 @@
 
 /*----------------------------------- Recipes Page */
 
-.recipes-heading {
-    text-align: center;
+.card-recipe .card-body {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.card-recipe img {
+    width: 100%;
+    height: 25vh;
+    object-fit: cover;
+}
+
+/*----------------------------------- Create Recipe */
+
+.create-card{
+    width: 80%;
+    margin: auto;
+}
+
+/*----------------------------------- View Recipe */
+
+.view-card {
+    width: 100%;
+    margin: 20px 0;
+    background-color: #dbe5e6;
+}
+
+.view-info {
+    background-color: rgba(95, 158, 160, 0.637);
+    border-radius: 5px;
+    width: 60%;
+    margin: 20px auto;
+    padding-top: 15px;
+}
+
+.view-body {
+    margin: 0 auto;
+}
+
+.view-banner {
+    padding: 20px;
+
+}
+
+.edit-delete {
+    margin: 10px;
+}
+
+.ing-dir {
+    width: 90%;
+    padding: 20px;
+    margin: auto;
+}
+
+@media (max-width: 768px) {
+    .ing-dir{
+        width: 100%;
+        padding: 0;
+    }
+    .view-info {
+        width: 100%;
+    }
 }
