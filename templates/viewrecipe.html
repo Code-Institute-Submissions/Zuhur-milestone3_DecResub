@@ -1,0 +1,51 @@
+{% extends "base.html" %} 
+
+{% block content %}
+    <div class="container view-recipe-container">
+        <div class="card view-card">
+            <div class="card-body view-body">
+                <h1 class="card-title text-center"> {{ show_recipe.recipe_name }} </h1>
+                <h6 class="card-subtitle mb-2 text-muted text-center"><em> By: {{ show_recipe.author }} </em></h6>
+                
+                <div class="row view-info text-center">
+                    <div class="col-md-4 align-items-center">
+                        <p> <strong>Prep time: </strong> {{ show_recipe.prep_time }}</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p> <strong>Cook time: </strong> {{ show_recipe.cook_time }}</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p> <strong>Serves: </strong> {{ show_recipe.serves }}</p>
+                    </div>
+                </div>
+
+
+                <div class="ingredients">
+                    <h3>Ingredients</h3>
+                    <ul>
+                        {% for ingredient in show_recipe.ingredients %}
+                            <li> {{ ingredient }} </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="directions">
+                    <h3>Directions</h3>
+                    <ol>
+                        {% for ingredient in show_recipe.instructions %}
+                            <li> {{ ingredient }} </li>
+                        {% endfor %}
+                    </ol>
+                </div>
+
+                {% if show_recipe.author == session["user"] %}
+                    <div class="text-center">
+                        <a href="#" class="btn btn-primary btn-md" role="button" aria-pressed="true">Edit</a>
+                        <a href="#" class="btn btn-secondary btn-md" role="button" aria-pressed="true">Delete</a>  
+                    </div>
+                {% endif %}
+            </div>
+        </div>    
+    </div>
+
+{% endblock %}
