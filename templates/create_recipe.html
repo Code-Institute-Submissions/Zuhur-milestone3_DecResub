@@ -15,7 +15,7 @@
                     <div class="form-row align-items-center">
                         <div class="form-group col-6">
                             <label for="prep_time">Prep Time</label>
-                            <input type="number" class="form-control" id="prep_time" name="prep_time" min="1" max="1000" placeholder="Enter prep time" required>
+                            <input type="number" class="form-control" id="prep_time" name="prep_time" min="0" max="1000" placeholder="Enter prep time" step="0.1" required>
                         </div>
                         <div class="form-group col-6">
                             <div class="form-check form-check-inline">
@@ -36,7 +36,7 @@
                     <div class="form-row align-items-center">
                         <div class="form-group col-6">
                             <label class="sr-only" for="prep_time">Cook Time</label>
-                            <input type="number" class="form-control" id="cook_time" name="cook_time" min="1" max="1000" placeholder="Enter cook time" required>
+                            <input type="number" class="form-control" id="cook_time" name="cook_time" min="0" max="1000" placeholder="Enter cook time" step="0.1" required>
                         </div>
                         <div class="form-group col-6">
                             <div class="form-check form-check-inline">
@@ -78,7 +78,7 @@
 
                     <!-- Image -->
                     <div class="form-group">
-                        <label for="recipe_image"></label>
+                        <label for="recipe_image"> Upload Image:  </label>
                         <input type="file" name="recipe_image">
                     </div>
 
@@ -88,7 +88,7 @@
                         <label class="form-check-label" for="is_private"> Private </label>
                     </div>
                     <div class="cancel-submit text-center">
-                        <a href="#" class="cancel-btn">Cancel</a>
+                        <a href=" {{url_for('allrecipes')}} " class="cancel-btn">Cancel</a>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
