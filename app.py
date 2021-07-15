@@ -140,7 +140,34 @@ def viewrecipe(recipe_id):
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
     recipe = mongo.db.recipe.find_one({"_id": ObjectId(recipe_id)})
-    print(recipe)
+
+    if request.method == "POST":
+        recipe_image = request.files['recipe_image']
+        print(recipe_image.filename)
+        if recipe_image.filename != "":
+            mongo.save_file(recipe_image.filename, recipe_image)
+            mongo.db.recipe.update({"_id": ObjectId(recipe_id)}, {"recipe_image": recipe_image.filename})
+
+            new_recipe = {
+                "recipe_name": request.form.get('recipe_name').capitalize(),
+                "prep_time": request.form.get('prep_time') + ' ' + request.form.get('prep_unit'),
+                "cook_time": request.form.get('cook_time') + ' ' + request.form.get('cook_unit'),
+                "serves": request.form.get('serves'),
+                "ingredients": request.form.get('ingredients').replace('\r', '').split('\n'),
+                "instructions": request.form.get('instructions').replace('\r', '').split('\n'),
+                "author": session["user"],
+                "recipe_image": recipe_image.filename,
+                "is_private": bool(request.form.get('is_private')),
+            }
+            mongo.db.recipe.update({"_id": ObjectId(recipe_id)}, { "$set": new_recipe })
+            session["alert"] = "alert alert-success"
+            flash("Recipe successfully updated")
+
+    
+        return redirect(url_for('allrecipes'))
+
+
+    recipe = mongo.db.recipe.find_one({"_id": ObjectId(recipe_id)}) 
     return render_template("edit_recipe.html", recipe=recipe)
 
 
