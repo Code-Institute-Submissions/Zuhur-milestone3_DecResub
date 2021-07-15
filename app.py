@@ -176,6 +176,14 @@ def delete_recipe(recipe_id):
     flash("Recipe Successfully Deleted")
     return redirect(url_for("allrecipes"))
 
+@app.route("/myrecipes")
+def myrecipes():
+    if session["user"]:
+        recipes = list(mongo.db.recipe.find())
+        return render_template('myrecipes.html', recipes=recipes)
+    
+    return redirect('login')
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
