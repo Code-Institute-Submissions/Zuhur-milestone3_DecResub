@@ -13,7 +13,7 @@
 <body class="index-customize">
     <header>
         <nav class="navbar navbar-expand-lg">
-            <a class="navbar-brand" href="#">RecipeClub</a>
+            <a class="navbar-brand" href=" {{url_for('index')}} ">RecipeClub</a>
             
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -21,20 +21,26 @@
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav ml-auto">
+
                     {% if session['user']%}
-                    <li class="nav-item mr-4">
-                        <a class="nav-link pl-4 pr-4" href=" {{url_for('allrecipes', name=session['user'])}} ">All Recipes</a>
-                    </li>
-                    <li class="nav-item mr-4">
-                        <a class="nav-link pl-4 pr-4" href=" {{url_for('myrecipes.html')}} ">My Recipes</a>
-                    </li>
-                    <li class="nav-item mr-4">
-                        <a class="nav-link pl-4 pr-4" href=" {{url_for('create_recipe')}} ">Create Recipe</a>
-                    </li>
-                    <div class="dropdown-divider"></div>
-                    <li class="nav-item mr-4">
-                        <a class="nav-link pl-4 pr-4" href=" {{url_for('logout')}} ">Logout</a>
-                    </li>
+                        {% if session['user'] == "admin@recipeclub.com" %}
+                        <li class="nav-item mr-4">
+                            <a class="nav-link pl-4 pr-4" href=" {{url_for('winner')}} ">Winner</a>
+                        </li>
+                        {% endif %}
+                        <li class="nav-item mr-4">
+                            <a class="nav-link pl-4 pr-4" href=" {{url_for('allrecipes', name=session['user'])}} ">All Recipes</a>
+                        </li>
+                        <li class="nav-item mr-4">
+                            <a class="nav-link pl-4 pr-4" href=" {{url_for('myrecipes')}} ">My Recipes</a>
+                        </li>
+                        <li class="nav-item mr-4">
+                            <a class="nav-link pl-4 pr-4" href=" {{url_for('create_recipe')}} ">Create Recipe</a>
+                        </li>
+                        <div class="dropdown-divider"></div>
+                        <li class="nav-item mr-4">
+                            <a class="nav-link pl-4 pr-4" href=" {{url_for('logout')}} ">Logout</a>
+                        </li>
                     {% else %}
                     <li class="nav-item mr-4">
                         <a class="nav-link login-btn pl-4 pr-4" href="{{ url_for('login') }}">Log In</a>
@@ -55,6 +61,48 @@
             <a class="btn btn-danger btn-lg register-btn" href="{{ url_for('register')}}" role="button">Register</a>
         </div> 
     </div>
+
+    <article class="container">
+        {% for r in recipe %}
+        <div class="winner-recipe">
+            <div class="header-banner text-center">
+                <h1> Recipe of the Month </h1>
+            <h3> {{ r.recipe_name }} </h3>
+            <em>By: {{ r.author }} </em>
+
+            <div class="row view-info text-center">
+                <div class="col-md-4 align-items-center">
+                    <p> <strong>Prep time: </strong> {{ r.prep_time }}</p>
+                </div>
+                <div class="col-md-4">
+                    <p> <strong>Cook time: </strong> {{ r.cook_time }}</p>
+                </div>
+                <div class="col-md-4">
+                    <p> <strong>Serves: </strong> {{ r.serves }}</p>
+                </div>
+            </div>
+            </div>
+
+            <div class="ingredients ing-dir">
+                <h3>Ingredients</h3>
+                <ul>
+                    {% for ingredient in r.ingredients %}
+                        <li> {{ ingredient }} </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="directions ing-dir">
+                <h3>Directions</h3>
+                <ol>
+                    {% for instruction in r.instructions %}
+                        <li> {{ instruction }} </li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+        {% endfor %}
+    </article>
 
 </body>
 </html>
