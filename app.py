@@ -18,8 +18,8 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/index")
 def index():
-    recipes = mongo.db.recipe.find()
-    return render_template("index.html", recipes=recipes)
+    recipe = mongo.db.winner.find()
+    return render_template("index.html", recipe=recipe)
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
@@ -182,7 +182,26 @@ def myrecipes():
         recipes = list(mongo.db.recipe.find())
         return render_template('myrecipes.html', recipes=recipes)
     
-    return redirect('login')
+    return redirect(url_for('login'))
+
+@app.route("/winner", methods=["GET", "POST"])
+def winner():
+    if request.method == "POST":
+        winner_recipe = mongo.db.recipe.find_one({"recipe_name": request.form.get("winner")})
+        # Check if winner collection is empty
+        if mongo.db.winner.count() == 0:
+            # insert winners recipe into collection
+            mongo.db.winner.insert_one(winner_recipe)
+        else:
+            # remove existing recipe and add new recipe
+            mongo.db.winner.remove()
+            mongo.db.winner.insert_one(winner_recipe)
+        return redirect(url_for("index"))
+    
+    recipes = list(mongo.db.recipe.find())
+    return render_template("winner.html", recipes=recipes)
+
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
