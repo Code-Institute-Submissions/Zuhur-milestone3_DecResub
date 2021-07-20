@@ -22,6 +22,11 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav ml-auto">
                     {% if session["user"] %}
+                        {% if session['user'] == "admin@recipeclub.com" %}
+                            <li class="nav-item mr-4">
+                                <a class="nav-link pl-4 pr-4" href=" {{url_for('winner')}} ">Winner</a>
+                            </li>
+                        {% endif %}
                         <li class="nav-item mr-4">
                             <a class="nav-link pl-4 pr-4" href=" {{url_for('allrecipes')}} ">All Recipes</a>
                         </li>
