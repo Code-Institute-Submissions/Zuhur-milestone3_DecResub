@@ -163,7 +163,6 @@ def edit_recipe(recipe_id):
         flash("Recipe successfully updated")
         return redirect(url_for('allrecipes'))
 
-    recipe = mongo.db.recipe.find_one({"_id": ObjectId(recipe_id)}) 
     return render_template("edit_recipe.html", recipe=recipe)
 
 
