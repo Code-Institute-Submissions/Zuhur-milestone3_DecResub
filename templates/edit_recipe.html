@@ -86,16 +86,16 @@
                     <!-- Ingredients -->
                     <div class="form-group">    
                         <label for="ingredients">Add each ingredient on a new line 
-                            <i class="fas fa-info-circle" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"></i>
+                            <i class="fas fa-info-circle" data-toggle="popover" data-content="Remove new lines to avoid empty bulletpoints"></i>
                         </label>
-                        <textarea class="form-control" id="ingredients" name="ingredients" rows="6" placeholder="First ingredient"> {{ '\n'.join(recipe.ingredients) }}  
+                        <textarea class="form-control" id="ingredients" name="ingredients" rows="6" placeholder="First ingredient"> {{ '\n'.join(recipe.ingredients) '\n'.join}}  
                         </textarea>
                     </div>
 
                     <!-- Instructions -->
                     <div class="form-group">    
                         <label for="instructions">Add each instruction on a new line 
-                            <i class="fas fa-info-circle" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"></i>
+                            <i class="fas fa-info-circle" data-toggle="popover" data-content="Remove any extra new lines to avoid empty instructional space"></i>
                         </label>
                         <textarea class="form-control" id="instructions" name="instructions" rows="6" placeholder="Add milk to egg. Mix">{{ '\n'.join(recipe.instructions) }}</textarea>
                     </div>
