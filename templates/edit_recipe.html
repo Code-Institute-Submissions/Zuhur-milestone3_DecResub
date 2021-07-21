@@ -5,11 +5,11 @@
         <div class="card create-card">
             <h1 class="text-center">Edit Recipe</h1>
             <div class="card-body create-recipe-card-body">
-                <form action=" {{url_for('update_edit', recipe_id=recipe._id)}} " method="POST" enctype="multipart/form-data">
+                <form action=" {{url_for('edit_recipe', recipe_id=recipe._id)}} " method="POST" enctype="multipart/form-data">
                     <!-- Recipe Name-->
                     <div class="form-group">
                         <label for="recipe_name">Recipe Name</label>
-                        <input type="text" value={{ recipe.recipe_name }} class="form-control" id="recipe_name" name="recipe_name" placeholder="Recipe Name" required>
+                        <input type="text" value="{{ recipe.recipe_name }}" class="form-control" id="recipe_name" name="recipe_name" placeholder="Recipe Name" required>
                     </div>
                     <!-- Prep Time -->
                     <div class="form-row align-items-center">
@@ -80,16 +80,15 @@
                     <!-- Serves -->
                     <div class="form-group">
                         <label class="sr-only" for="recipe_name">Serves</label>
-                        <input type="number" value={{ recipe.serves }} min="1" max="1000" class="form-control" id="serves" name="serves" placeholder="Serves" required>
+                        <input type="number" value= {{ recipe.serves }} min="1" max="1000" class="form-control" id="serves" name="serves" placeholder="Serves" required>
                     </div>
-
 
                     <!-- Ingredients -->
                     <div class="form-group">    
                         <label for="ingredients">Add each ingredient on a new line 
                             <i class="fas fa-info-circle" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"></i>
                         </label>
-                        <textarea class="form-control" id="ingredients" name="ingredients" rows="6" placeholder="First ingredient"> {{ '\n'.join(recipe.ingredients)}}  
+                        <textarea class="form-control" id="ingredients" name="ingredients" rows="6" placeholder="First ingredient"> {{ '\n'.join(recipe.ingredients) }}  
                         </textarea>
                     </div>
 
@@ -98,7 +97,7 @@
                         <label for="instructions">Add each instruction on a new line 
                             <i class="fas fa-info-circle" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"></i>
                         </label>
-                        <textarea class="form-control" id="instructions" name="instructions" rows="6" placeholder="Add milk to egg. Mix">{{ '\n'.join(recipe.instructions)}}</textarea>
+                        <textarea class="form-control" id="instructions" name="instructions" rows="6" placeholder="Add milk to egg. Mix">{{ '\n'.join(recipe.instructions) }}</textarea>
                     </div>
 
                     <!-- Image -->
