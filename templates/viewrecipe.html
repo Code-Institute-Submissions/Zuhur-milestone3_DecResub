@@ -27,14 +27,15 @@
                         {% for ingredient in show_recipe.ingredients %}
                             <li> {{ ingredient }} </li>
                         {% endfor %}
+                        
                     </ul>
                 </div>
 
                 <div class="directions ing-dir">
                     <h3>Directions</h3>
                     <ol>
-                        {% for ingredient in show_recipe.instructions %}
-                            <li> {{ ingredient }} </li>
+                        {% for instruction in show_recipe.instructions %}
+                            <li> {{ instruction }} </li>
                         {% endfor %}
                     </ol>
                 </div>
