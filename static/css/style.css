@@ -1,14 +1,10 @@
 /*----------------------------------- Body - Index page*/
 .index-customize {
-    height: 80vh;
-    background-image: url('/static/images/greyspoons.jpg');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    
 }
 
 
-/*----------------------------------- Home - Navbar*/
+/*----------------------------------- Index - Navbar*/
 .navbar {
     background-color: rgba(0, 0, 0, 0.801);
 }
@@ -36,25 +32,31 @@
     border-color: rgba(40, 167, 70, 0.808);
 }
 
-.monthly-btn {
-    color: wheat;
-}
 
 .fa-user {
     color: whitesmoke;
     border: 1px solid whitesmoke;
     border-radius: 3px;
     padding: 5px 10px;
-    margin-right: 100px;
 }
 
-/*----------------------------------- Home - Banner*/
-.banner-container {
-    height: 100%;
+.navbar{
+    position: absolute;
     width: 100%;
+    z-index: 1;
+}
+/*----------------------------------- Index - Banner*/
+
+.banner-container {
+    height: 80vh;
+    width: 100%;
+    background-image: url('/static/images/greyspoons.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-.banner {
+.banner-text {
     text-align: center;
     width: 100%;
     margin: 0 auto;
