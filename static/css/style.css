@@ -6,6 +6,8 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+
 /*----------------------------------- Home - Navbar*/
 .navbar {
     background-color: rgba(0, 0, 0, 0.801);
@@ -36,6 +38,14 @@
 
 .monthly-btn {
     color: wheat;
+}
+
+.fa-user {
+    color: whitesmoke;
+    border: 1px solid whitesmoke;
+    border-radius: 3px;
+    padding: 5px 10px;
+    margin-right: 100px;
 }
 
 /*----------------------------------- Home - Banner*/
@@ -156,4 +166,20 @@
     .view-info {
         width: 100%;
     }
+}
+
+/*----------------------------------- Edit Recipe */
+.fa-info-circle {
+    cursor: pointer;
+}
+
+/*----------------------------------- Select Winner */
+
+.select-winner {
+    width: 100%;
+}
+
+.winner-recipe {
+    padding: 10px;
+    margin-bottom: 200px;
 }
