@@ -45,6 +45,13 @@
     width: 100%;
     z-index: 1;
 }
+
+@media (max-width: 768px) {
+    #index-nav {
+        background-color: rgba(0, 0, 0, 0.825);
+    }
+}
+
 /*----------------------------------- Index - Banner*/
 
 .banner-container {
