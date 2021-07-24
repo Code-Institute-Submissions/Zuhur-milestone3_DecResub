@@ -12,6 +12,7 @@ body {
 /*----------------------------------- General - Navbar*/
 .navbar {
     background-color: black;
+    z-index: 1;
 }
 
 .navbar-brand {
