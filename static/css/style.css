@@ -1,8 +1,3 @@
-/*----------------------------------- Body - Index page*/
-.index-customize {
-    
-}
-
 
 /*----------------------------------- Index - Navbar*/
 .navbar {
@@ -10,13 +5,21 @@
 }
 
 .navbar-brand {
-    color: bisque;
+    color: #fb8600;
     margin-left: 10px;
     padding: 5px 10px;
 }
 
 .navbar-brand:hover {
-    color: bisque;
+    color: #fb8600cc;
+}
+
+.nav-link {
+    color: #faedcd;
+}
+
+.nav-link:hover {
+    color: #faedcdce;
 }
 
 .login-btn {
@@ -31,7 +34,6 @@
     color: rgba(40, 167, 70, 0.808);
     border-color: rgba(40, 167, 70, 0.808);
 }
-
 
 .fa-user {
     color: whitesmoke;
@@ -52,6 +54,8 @@
     }
 }
 
+
+
 /*----------------------------------- Index - Banner*/
 
 .banner-container {
@@ -64,17 +68,24 @@
 }
 
 .banner-text {
+    width: 80%;
+    top: 35%;
     text-align: center;
-    width: 100%;
     margin: 0 auto;
     position: relative;
-    top: 20%;
     padding: 20px 0;
-    color: whitesmoke;
 }
 
-.banner h1 {
+.banner-text h1 {
     font-size: 3rem;
+    padding-bottom: 10px;
+    color: #f79d65;
+}
+
+.banner-text p {
+    color: #faedcd;
+    padding: 0 20px;
+
 }
 
 .banner-btns {
@@ -89,6 +100,15 @@
     border-radius: 30px;
 }
 
+@media (max-width: 625px) {
+    .banner-text {
+        width: 100%;
+        font-size: 0.8em;
+    }
+    .banner-text h1 {
+        font-size: 2rem;
+    }
+}
 /*----------------------------------- Register - Card*/
 
 
