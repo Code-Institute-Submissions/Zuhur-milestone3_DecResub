@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content%}
-    <div class="container card create-card">
+    <div class="card create-card page">
         <h1 class="text-center">Create Recipe</h1>
         <div class="card-body create-recipe-card-body">
             <form action=" {{url_for('create_recipe')}} " method="POST" enctype="multipart/form-data">
@@ -74,13 +74,14 @@
                 <!-- Image -->
                 <div class="form-group">
                     <label for="recipe_image"> Upload Image:  </label>
-                    <input type="file" name="recipe_image">
+                    <input id="recipe_image" type="file" name="recipe_image">
                 </div>
 
                 <!-- Private -->
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="is_private" name="is_private" >
-                    <label class="form-check-label" for="is_private"> Private </label> <i class="fas fa-info-circle" data-toggle="popover" data-content="Select if you want this recipe to be private"></i>
+                    <label class="form-check-label" for="is_private"> Private </label> 
+                    <i class="fas fa-info-circle" data-toggle="popover" data-content="Select if you want this recipe to be private"></i>
                 </div>
 
                 <!-- Buttons -->

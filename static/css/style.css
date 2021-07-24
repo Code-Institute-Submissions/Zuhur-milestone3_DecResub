@@ -5,6 +5,10 @@ body {
     font-weight: 300;
 }
 
+.page {
+    min-height: 80vh;
+}
+
 /*----------------------------------- General - Navbar*/
 .navbar {
     background-color: black;

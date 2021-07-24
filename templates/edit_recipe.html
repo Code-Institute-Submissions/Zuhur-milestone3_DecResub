@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content%}
-    <div class="card create-card">
+    <div class="card create-card page">
         <h1 class="text-center">Edit Recipe</h1>
         <div class="card-body create-recipe-card-body">
             <form action=" {{url_for('edit_recipe', recipe_id=recipe._id)}} " method="POST" enctype="multipart/form-data">
