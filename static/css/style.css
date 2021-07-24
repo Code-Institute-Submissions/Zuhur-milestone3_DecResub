@@ -131,11 +131,19 @@ article {
 }
 
 /*----------------------------------- Index - Footer */
-
-footer p {
+.index-footer p {
     background-color: #ced4da;
     padding: 10px;
     margin-bottom: 0px;
+    position: absolute;
+    width: 100%;
+}
+
+footer {
+    padding: 10px;
+    margin-bottom: 0px;
+    position: absolute;
+    width: 100%;
 }
 
 /*----------------------------------- Register - Card*/
