@@ -5,9 +5,9 @@
 {% endblock %}
 
 {% block content%}
-    <div class="card sign-card page">
-        <div class="card-body sign-card-body">
-            <h5 class="card-title text-center">Register</h5>
+<div class="page">
+    <div class="form-box">
+        <h3 class="text-center">Register</h3>
             <form method="post" action="{{ url_for('register') }}">
                 <!-- Name -->
                 <div class="input-group mb-3">
@@ -43,6 +43,7 @@
                     <p>Already have an account?<a href=" {{ url_for('login') }}">Log In</a></p>
                 </div>
             </form>
-        </div>
     </div>
+</div>
+
 {% endblock %}

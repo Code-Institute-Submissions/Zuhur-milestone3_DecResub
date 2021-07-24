@@ -5,29 +5,30 @@
 {% endblock %}
 
 {% block content%}
-    <div class="card sign-card page">
-        <div class="card-body sign-card-body">
-            <h5 class="card-title text-center">Log In</h5>
-            <form action="{{ url_for('login') }}" method="post">
-                <!-- Email -->
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
-                    </div>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1" required>
+
+<div class="page">
+    <div class="form-box">
+        <h1 class="text-center"> Log In</h1>
+        <form action="{{ url_for('login') }}" method="post">
+            <!-- Email -->
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
                 </div>
-                <!-- Password -->
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
-                    </div>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1" required>
+            </div>
+            <!-- Password -->
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
                 </div>
-                <div class="login-register">
-                    <button class="btn btn-primary pl-4 pr-4" href="{{ url_for('login') }}" role="button">Log In</button>
-                    <p>New to RecipeClub? <a href=" {{ url_for('register') }}"> Register</a></p>
-                </div>
-            </form>
-        </div>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required>
+            </div>
+            <div class="login-register">
+                <button class="btn btn-primary pl-4 pr-4" href="{{ url_for('login') }}" role="button">Log In</button>
+                <p>New to RecipeClub? <a href=" {{ url_for('register') }}"> Register</a></p>
+            </div>
+        </form>
     </div>
+</div>
 {% endblock %}

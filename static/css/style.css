@@ -154,14 +154,23 @@ footer {
 
 
 /*----------------------------------- Login - Card*/
-.sign-card {
-    width: 50%;
-    margin: 100px auto;
+.form-box {
+    width: 60%;
+    padding: 20px 50px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 1px solid grey;
+    border-radius: 10px;
 }
 
-.sign-card-body {
-    width: 50%;
-    margin: 2em auto;
+@media (max-width: 425px) {
+    .form-box {
+        width: 90%;
+    }
 }
 
 .login-register {
