@@ -54,7 +54,17 @@ Features differ between visitors, users and admin.
 **Users:** Allow users to participate in voting for recipe of the month. <br>
 **Admin:** Give admin rights to delete users. <br>
 
+## Technologies
 
+-	HTML5: For the structure of the site.
+-	CSS3: For styling of the site.
+-	Bootsrap4: For fast development of the site and its responsiveness.
+-	Fontawesome: For visual icons.
+-	Github: For remote access of the project.
+-	Git: For version-control.
+-	Visual Studio Code: A development environment as an upgrade to gitpod.
+- Mongodb: As the database for storing users data
+- Python/Flask: Used for the backend and for communication with mongodb
 
 
 
