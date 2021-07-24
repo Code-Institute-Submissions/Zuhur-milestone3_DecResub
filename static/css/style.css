@@ -117,6 +117,27 @@ body {
         font-size: 2rem;
     }
 }
+
+/*----------------------------------- Index - Article */
+article {
+    background-color: #ced4da;
+    padding: 10px;
+}
+
+.winner-recipe {
+    padding: 50px 10px;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+/*----------------------------------- Index - Footer */
+
+footer p {
+    background-color: #ced4da;
+    padding: 10px;
+    margin-bottom: 0px;
+}
+
 /*----------------------------------- Register - Card*/
 
 
@@ -217,7 +238,4 @@ body {
     width: 100%;
 }
 
-.winner-recipe {
-    padding: 10px;
-    margin-bottom: 200px;
-}
+
