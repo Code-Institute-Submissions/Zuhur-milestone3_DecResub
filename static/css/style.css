@@ -1,7 +1,6 @@
-
-/*----------------------------------- Index - Navbar*/
+/*----------------------------------- General - Navbar*/
 .navbar {
-    background-color: rgba(0, 0, 0, 0.801);
+    background-color: black;
 }
 
 .navbar-brand {
@@ -22,6 +21,21 @@
     color: #faedcdce;
 }
 
+.navbar-icon {
+    color: whitesmoke;
+    border: 1px solid whitesmoke;
+    border-radius: 3px;
+    padding: 5px 10px;
+}
+
+/*----------------------------------- Index - Navbar*/
+.index-navbar {
+    background-color: rgba(0, 0, 0, 0.801);
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+}
+
 .login-btn {
     text-decoration: none;
     color: rgb(40, 167, 69);
@@ -35,25 +49,12 @@
     border-color: rgba(40, 167, 70, 0.808);
 }
 
-.fa-user {
-    color: whitesmoke;
-    border: 1px solid whitesmoke;
-    border-radius: 3px;
-    padding: 5px 10px;
-}
-
-.navbar{
-    position: absolute;
-    width: 100%;
-    z-index: 1;
-}
 
 @media (max-width: 768px) {
     #index-nav {
         background-color: rgba(0, 0, 0, 0.825);
     }
 }
-
 
 
 /*----------------------------------- Index - Banner*/
@@ -133,6 +134,7 @@
 
 
 /*----------------------------------- Recipes Page */
+
 
 .card-recipe .card-body {
     padding-left: 5px;
