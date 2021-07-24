@@ -54,16 +54,19 @@
 
 
     <div class="banner-container">
-        <div class="banner">
+        <div class="banner-text">
             <h1>Become A Member of RecipeClub</h1>
             <p>Register to get access to numerous recipes and get a chance to win <strong><em>Recipe Of the Month!</em></strong></p>
         </div> 
-        {% if session['user'] == False %}  
-            <div class="banner-btns">
+
+        <div class="banner-btns">
+            {% if not session['user'] %}
                 <a class="btn btn-danger btn-lg register-btn" href="{{ url_for('register')}}" role="button">Register</a>
-            </div> 
-        {% endif %}
+            {% endif %}
+        </div> 
     </div>
+        
+
 
     <article class="container">
         {% for r in recipe %}
