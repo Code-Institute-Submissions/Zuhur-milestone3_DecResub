@@ -1,98 +1,94 @@
 {% extends "base.html" %}
 
 {% block content%}
-    <div class="container">
-        <div class="card create-card">
-            <h1 class="text-center">Create Recipe</h1>
-            <div class="card-body create-recipe-card-body">
-                <form action=" {{url_for('create_recipe')}} " method="POST" enctype="multipart/form-data">
-                    <!-- Recipe Name-->
-                    <div class="form-group">
-                        <label for="recipe_name">Recipe Name</label>
-                        <input type="text" class="form-control" id="recipe_name" name="recipe_name" placeholder="Recipe Name" required>
+    <div class="container card create-card">
+        <h1 class="text-center">Create Recipe</h1>
+        <div class="card-body create-recipe-card-body">
+            <form action=" {{url_for('create_recipe')}} " method="POST" enctype="multipart/form-data">
+                <!-- Recipe Name-->
+                <div class="form-group">
+                    <label for="recipe_name">Recipe Name</label>
+                    <input type="text" class="form-control" id="recipe_name" name="recipe_name" placeholder="Recipe Name" required>
+                </div>
+                <!-- Prep Time -->
+                <div class="form-row align-items-center">
+                    <div class="form-group col-6">
+                        <label class="sr-only" for="prep_time">Prep Time</label>
+                        <input type="number" class="form-control" id="prep_time" name="prep_time" min="0" max="1000" placeholder="Enter prep time" step="0.1" required>
                     </div>
-                    <!-- Prep Time -->
-                    <div class="form-row align-items-center">
-                        <div class="form-group col-6">
-                            <label for="prep_time">Prep Time</label>
-                            <input type="number" class="form-control" id="prep_time" name="prep_time" min="0" max="1000" placeholder="Enter prep time" step="0.1" required>
+                    <div class="form-group col-6">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" id="min" name="prep_unit" value="minutes" checked>
+                            <label class="form-check-label" for="min">Minutes</label>
                         </div>
-                        <div class="form-group col-6">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="min" name="prep_unit" value="minutes" checked>
-                                <label class="form-check-label" for="min">Minutes</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="hrs" name="prep_unit" value="hours">
-                                <label class="form-check-label" for="hrs">Hours</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="days" name="prep_unit" value="days">
-                                <label class="form-check-label" for="days">Day(s)</label>
-                            </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" id="hrs" name="prep_unit" value="hours">
+                            <label class="form-check-label" for="hrs">Hours</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" id="days" name="prep_unit" value="days">
+                            <label class="form-check-label" for="days">Day(s)</label>
                         </div>
                     </div>
-                    <!-- Cook Time -->
-                    <div class="form-row align-items-center">
-                        <div class="form-group col-6">
-                            <label class="sr-only" for="prep_time">Cook Time</label>
-                            <input type="number" class="form-control" id="cook_time" name="cook_time" min="0" max="1000" placeholder="Enter cook time" step="0.1" required>
+                </div>
+                <!-- Cook Time -->
+                <div class="form-row align-items-center">
+                    <div class="form-group col-6">
+                        <label class="sr-only" for="cook_time">Cook Time</label>
+                        <input type="number" class="form-control" id="cook_time" name="cook_time" min="0" max="1000" placeholder="Enter cook time" step="0.1" required>
+                    </div>
+                    <div class="form-group col-6">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" id="min" name="cook_unit" value="minutes" checked>
+                            <label class="form-check-label" for="min">Minutes</label>
                         </div>
-                        <div class="form-group col-6">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="min" name="cook_unit" value="minutes" checked>
-                                <label class="form-check-label" for="min">Minutes</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="hrs" name="cook_unit" value="hours">
-                                <label class="form-check-label" for="hrs">Hours</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="days" name="cook_unit" value="days">
-                                <label class="form-check-label" for="days">Day(s)</label>
-                            </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" id="hrs" name="cook_unit" value="hours">
+                            <label class="form-check-label" for="hrs">Hours</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" id="days" name="cook_unit" value="days">
+                            <label class="form-check-label" for="days">Day(s)</label>
                         </div>
                     </div>
-                    <!-- Serves -->
-                    <div class="form-group">
-                        <label class="sr-only" for="recipe_name">Serves</label>
-                        <input type="number" min="1" max="1000" class="form-control" id="serves" name="serves" placeholder="Serves" required>
-                    </div>
+                </div>
+                <!-- Serves -->
+                <div class="form-group">
+                    <label class="sr-only" for="recipe_name">Serves</label>
+                    <input type="number" min="1" max="1000" class="form-control" id="serves" name="serves" placeholder="Serves" required>
+                </div>
 
 
-                    <!-- Ingredients -->
-                    <div class="form-group">    
-                        <label for="ingredients">Add each ingredient on a new line 
-                            <i class="fas fa-info-circle" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"></i>
-                        </label>
-                        <textarea class="form-control" id="ingredients" name="ingredients" rows="6" placeholder="First ingredient"></textarea>
-                    </div>
+                <!-- Ingredients -->
+                <div class="form-group">    
+                    <label for="ingredients">Add each ingredient on a new line </label>
+                    <textarea class="form-control" id="ingredients" name="ingredients" rows="6" placeholder="First ingredient"></textarea>
+                </div>
 
-                    <!-- Instructions -->
-                    <div class="form-group">    
-                        <label for="instructions">Add each instruction on a new line 
-                            <i class="fas fa-info-circle" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"></i>
-                        </label>
-                        <textarea class="form-control" id="instructions" name="instructions" rows="6" placeholder="Add milk to egg. Mix"></textarea>
-                    </div>
+                <!-- Instructions -->
+                <div class="form-group">    
+                    <label for="instructions">Add each instruction on a new line </label>
+                    <textarea class="form-control" id="instructions" name="instructions" rows="6" placeholder="Add milk to egg. Mix"></textarea>
+                </div>
 
-                    <!-- Image -->
-                    <div class="form-group">
-                        <label for="recipe_image"> Upload Image:  </label>
-                        <input type="file" name="recipe_image">
-                    </div>
+                <!-- Image -->
+                <div class="form-group">
+                    <label for="recipe_image"> Upload Image:  </label>
+                    <input type="file" name="recipe_image">
+                </div>
 
-                    <!-- Private -->
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="is_private" name="is_private" >
-                        <label class="form-check-label" for="is_private"> Private </label>
-                    </div>
-                    <div class="cancel-submit text-center">
-                        <a href=" {{url_for('allrecipes')}} " class="cancel-btn">Cancel</a>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
-            </div>
+                <!-- Private -->
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="is_private" name="is_private" >
+                    <label class="form-check-label" for="is_private"> Private </label> <i class="fas fa-info-circle" data-toggle="popover" data-content="Select if you want this recipe to be private"></i>
+                </div>
+
+                <!-- Buttons -->
+                <div class="cancel-submit text-center">
+                    <a href=" {{url_for('allrecipes')}} " class="cancel-btn">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
         </div>
     </div>
 

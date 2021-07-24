@@ -161,7 +161,7 @@ footer p {
 }
 
 
-/*----------------------------------- Recipes Page */
+/*----------------------------------- AllRecipes Page */
 
 
 .card-recipe .card-body {
@@ -178,8 +178,21 @@ footer p {
 /*----------------------------------- Create Recipe */
 
 .create-card{
+    background-color: antiquewhite;
     width: 80%;
-    margin: auto;
+    margin: 10px auto;
+    padding: 30px;
+}
+
+@media (max-width: 625px) {
+    .create-card {        
+        width: 100%;
+        margin: 0;
+    }
+}
+
+.cancel-submit {
+    margin-top: 30px;
 }
 
 /*----------------------------------- View Recipe */
