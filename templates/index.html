@@ -12,12 +12,12 @@
 </head>
 <body class="index-customize">
     <header>
-        <nav class="navbar navbar-expand-lg">
+        <nav class="navbar navbar-expand-lg index-navbar">
             <a class="navbar-brand" href=" {{url_for('index')}} ">RecipeClub</a>
             
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon">
-                    <i class="fas fa-user"></i>
+                    <i class="fas fa-user navbar-icon"></i>
                 </span>
             </button>
 
@@ -56,7 +56,7 @@
     <div class="banner-container">
         <div class="banner-text">
             <h1>Become A Member of RecipeClub</h1>
-            <p>Register to get access to numerous recipes and get a chance to win <strong><em>Recipe Of the Month!</em></strong></p>
+            <p>Register to get access to numerous recipes and get a chance to win <strong><em><a href="#recipe-winner">Recipe Of the Month!</a></em></strong></p>
         </div> 
 
         <div class="banner-btns">
@@ -65,28 +65,26 @@
             {% endif %}
         </div> 
     </div>
-        
 
-
-    <article class="container">
+    <article id="recipe-winner">
         {% for r in recipe %}
-        <div class="winner-recipe">
+        <div class="container winner-recipe">
             <div class="header-banner text-center">
                 <h1> Recipe of the Month </h1>
-            <h3> {{ r.recipe_name }} </h3>
-            <em>By: {{ r.author }} </em>
+                <h3> {{ r.recipe_name }} </h3>
+                <em>By: {{ r.author }} </em>
 
-            <div class="row view-info text-center">
-                <div class="col-md-4 align-items-center">
-                    <p> <strong>Prep time: </strong> {{ r.prep_time }}</p>
+                <div class="row view-info text-center">
+                    <div class="col-md-4 align-items-center">
+                        <p> <strong>Prep time: </strong> {{ r.prep_time }}</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p> <strong>Cook time: </strong> {{ r.cook_time }}</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p> <strong>Serves: </strong> {{ r.serves }}</p>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <p> <strong>Cook time: </strong> {{ r.cook_time }}</p>
-                </div>
-                <div class="col-md-4">
-                    <p> <strong>Serves: </strong> {{ r.serves }}</p>
-                </div>
-            </div>
             </div>
 
             <div class="ingredients ing-dir">
@@ -97,6 +95,7 @@
                     {% endfor %}
                 </ul>
             </div>
+            
 
             <div class="directions ing-dir">
                 <h3>Directions</h3>
@@ -106,9 +105,18 @@
                     {% endfor %}
                 </ol>
             </div>
+            <div class="text-center">
+                <a class="btn btn-danger btn-lg register-btn" href="{{ url_for('register')}}" role="button">Register</a>
+            </div>
         </div>
         {% endfor %}
     </article>
+
+    <footer>
+        <p class="text-center pt-3">
+            &copy;2021 Zuhur Hassan
+        </p>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
