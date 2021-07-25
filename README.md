@@ -79,8 +79,9 @@ Features differ between visitors, users and admin.
 -	Github: For remote access of the project.
 -	Git: For version-control.
 -	Visual Studio Code: A development environment as an upgrade to gitpod.
-- Mongodb: As the database for storing users data
-- Python/Flask: Used for the backend and for communication with mongodb
+-  Mongodb: As the database for storing users data
+-  Python/Flask: Used for the backend and for communication with mongodb
+-  Heroku: Deployment of project
 
 ## Testing
 [PEP8](http://pep8online.com/) was used to check python file, until file was pep8 compliant. <br>
