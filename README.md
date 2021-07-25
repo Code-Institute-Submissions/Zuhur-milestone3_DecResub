@@ -4,7 +4,8 @@
 
 ## User Experience (UX)
 ### Strategy 
-The aim of this project is to create an online cookbook where users can create and share their recipes with fellow users. 
+The aim of this project is to create an online cookbook where users can create and share their recipes with fellow users. <br>
+[Live site](https://milestone-three.herokuapp.com/)
 
 #### User Stories
 **As a user I would like to**
@@ -66,7 +67,40 @@ Features differ between visitors, users and admin.
 - Mongodb: As the database for storing users data
 - Python/Flask: Used for the backend and for communication with mongodb
 
+## Testing
+[PEP8](http://pep8online.com/) was used to check python file, until file was pep8 compliant.
+The HTML validator used was [https://validator.w3.org/](https://validator.w3.org/). Several errors caught due to jinja the other errors were corrected until no errors shown.
+The CSS validator used was [https://jigsaw.w3.org/css-validator/validator]( https://jigsaw.w3.org/css-validator/validator). <br>
+Google devtools was used to make sure the site is responsive to different devices and screen sizes. <br>
 
+### Manual Testing
+Navbar: All navlinks for users and admin where tested and making sure they worked and destination where correct. <br>
+Buttons: All buttons where manually tested to see if the worked. Delete and edit recipes where tested for admin and regular users, admin has access to edit and delete buttons while uses only have access to recipes they created. <br>
+Forms: All inputs were tested to see if any wrong enteries where caught i.e. not filling in required fields results in prompt message before submission allowed.
 
+## Deployment
+
+- Create app.py file
+- Install flask <code> python -m pip install flask </code>
+- Create env.py file
+- Make sure env.py in gitignore file
+- Create requirements.txt file <code> python -m pip freeze > requirements.txt </code>
+- Create Procfile <code> echo web: python app.py > Procfile </code>
+- Install dnspython <code> python -m pip install flask </code>
+- Install flask-pymongo
+To Heroku
+- Heroku can not read env.py files therefore the contents need to be manually input into config vars (via settings).
+- Push all code to GitHub
+- Enable automatic deployment to allow automatic update when code pushed to GitHub.
+
+## Credits
+### Images
+Home page background: https://www.freepik.com/photos/background
+Recipe
+- https://unsplash.com/photos/Qf-gqJSWFYQ
+- https://unsplash.com/photos/TkzdkVn1AyA
+- https://unsplash.com/photos/2v-XcWsjftY
+- https://unsplash.com/photos/MqT0asuoIcU
+- https://unsplash.com/photos/1rqk6XVnw44
 
 
