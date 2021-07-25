@@ -1,8 +1,8 @@
 # RecipeClub
 
-**Milestone 3 project for Code institute Software Development Programme.** 
-![](/static/ms3wireframes/ms3-responsive.png)\
-
+**Milestone 3 project for Code institute Software Development Programme.**
+![](/static/ms3wireframes/ms3-responsive.png)
+[Live site](https://milestone-three.herokuapp.com/)
 ## Table of contents
 -   [User Experience](#user-experience)
     *   [Strategy](#strategy)
@@ -21,7 +21,6 @@
 ## User Experience
 ### Strategy 
 The aim of this project is to create an online cookbook where users can create and share their recipes with fellow users. <br>
-[Live site](https://milestone-three.herokuapp.com/)
 
 ### User Stories
 **As a user I would like to**
@@ -103,7 +102,7 @@ Forms: All inputs were tested to see if any wrong enteries where caught i.e. not
 - Create requirements.txt file <code> python -m pip freeze > requirements.txt </code>
 - Create Procfile <code> echo web: python app.py > Procfile </code>
 - Install dnspython <code> python -m pip install flask </code>
-- Install flask-pymongo
+- Install flask-pymongo <br>
 To Heroku
 - Heroku can not read env.py files therefore the contents need to be manually input into config vars (via settings).
 - Push all code to GitHub
@@ -111,7 +110,7 @@ To Heroku
 
 ## Credits
 ### Images
-Home page background: https://www.freepik.com/photos/background
+Home page background: https://www.freepik.com/photos/background <br>
 Recipe
 - https://unsplash.com/photos/Qf-gqJSWFYQ
 - https://unsplash.com/photos/TkzdkVn1AyA
