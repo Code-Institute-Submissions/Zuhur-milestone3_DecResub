@@ -2,12 +2,27 @@
 
 **Milestone 2 project for Code institute Software Development Programme.** 
 
-## User Experience (UX)
+## Table of contents
+-   [User Experience](#user-experience)
+    *   [Strategy](#strategy)
+    *   [User Stories](#user-stories)
+-   [Design](#design)
+    *   [Wireframes](#wireframes)
+    *   [Colours](#colours)
+    *   [Fonts](#fonts)
+-   [Features](#features)
+    *   [Existing Features](#existing-features) 
+    *   [Future eatures](#future-features)
+-   [Technologies](#technologies)   
+-   [Testing](#testing)
+-   [Deployment](#deployment)
+
+## User Experience
 ### Strategy 
 The aim of this project is to create an online cookbook where users can create and share their recipes with fellow users. <br>
 [Live site](https://milestone-three.herokuapp.com/)
 
-#### User Stories
+### User Stories
 **As a user I would like to**
 1. Be able to register to the website
 - There is a call to action button for registeration on the index page 
@@ -68,8 +83,8 @@ Features differ between visitors, users and admin.
 - Python/Flask: Used for the backend and for communication with mongodb
 
 ## Testing
-[PEP8](http://pep8online.com/) was used to check python file, until file was pep8 compliant.
-The HTML validator used was [https://validator.w3.org/](https://validator.w3.org/). Several errors caught due to jinja the other errors were corrected until no errors shown.
+[PEP8](http://pep8online.com/) was used to check python file, until file was pep8 compliant. <br>
+The HTML validator used was [https://validator.w3.org/](https://validator.w3.org/). Several errors caught due to jinja the other errors were corrected until no errors shown.<br>
 The CSS validator used was [https://jigsaw.w3.org/css-validator/validator]( https://jigsaw.w3.org/css-validator/validator). <br>
 Google devtools was used to make sure the site is responsive to different devices and screen sizes. <br>
 
