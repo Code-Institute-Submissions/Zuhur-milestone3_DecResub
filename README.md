@@ -1,6 +1,7 @@
 # RecipeClub
 
-**Milestone 2 project for Code institute Software Development Programme.** 
+**Milestone 3 project for Code institute Software Development Programme.** 
+![](/static/ms3wireframes/ms3-responsive.png)\
 
 ## Table of contents
 -   [User Experience](#user-experience)
