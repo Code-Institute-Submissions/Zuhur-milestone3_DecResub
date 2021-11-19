@@ -23,6 +23,10 @@ def index():
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
+    #if user is authenticated they shouldnt access register page 
+    if is_authenticated():
+        return redirect(url_for('allrecipes'))
+    
     if request.method == 'POST':
         # Check if username is available
         existing_user = mongo.db.users.find_one({"email": request.form.get('email').lower()})
@@ -53,6 +57,10 @@ def register():
 
 @app.route("/login", methods=["POST", "GET"])
 def login():
+    # if someone is logged in they cant access login page
+    if is_authenticated():
+        return redirect(url_for('allrecipes'))
+
     if request.method == "POST":
         # Check if user exists
         check_user = mongo.db.users.find_one({"email": request.form.get('email').lower()})
@@ -78,20 +86,25 @@ def login():
 
 @app.route("/logout")
 def logout():
+    # if user is not authenticated redirect them to login page
+    if not is_authenticated():
+        return redirect(url_for('login'))
+    
     # remove users session
-    session['alert'] = "alert alert-danger"
-    flash("You have been logged out!")
-    session.pop("user")
-    return redirect(url_for('login'))
-
-
-@app.route("/profile")
-def profile(name):
-    return render_template('profile.html', name=name)
+    if session["user"]:
+        session['alert'] = "alert alert-danger"
+        flash("You have been logged out!")
+        session.pop("user")
+        
+        return redirect(url_for('login'))
     
     
 @app.route("/create_recipe", methods=["GET", "POST"])
 def create_recipe():
+    # if user is not authenticated they shouldnt be able to create a recipe
+    if not is_authenticated():
+        return redirect(url_for("login"))
+
     if request.method == "POST":
         if "recipe_image" in request.files:
             recipe_image = request.files['recipe_image']
@@ -119,10 +132,10 @@ def create_recipe():
 
 @app.route("/allrecipes")
 def allrecipes():
-    if session["user"]:
+    if is_authenticated():
         recipes = list(mongo.db.recipe.find())
         return render_template('allrecipes.html', recipes=recipes)
-    
+
     return redirect('login')
 
 
@@ -133,11 +146,19 @@ def img_file(filename):
 
 @app.route("/viewrecipe/<recipe_id>")
 def viewrecipe(recipe_id):
+    # if user is not authenticated they shouldnt be able to view recipes
+    if not is_authenticated():
+        return redirect(url_for("login"))
+
     show_recipe = mongo.db.recipe.find_one({"_id": ObjectId(recipe_id)})
     return render_template('viewrecipe.html', show_recipe = show_recipe)
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
+    # if user is not authenticated they shouldnt be able to edit recipes
+    if not is_authenticated():
+        return redirect(url_for("login"))
+
     recipe = mongo.db.recipe.find_one({"_id": ObjectId(recipe_id)})
     if "recipe_image" in request.files:
         recipe_image = request.files['recipe_image']
@@ -167,13 +188,17 @@ def edit_recipe(recipe_id):
 
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
+    # if user is not authenticated they shouldnt be able to delete recipes
+    if not is_authenticated():
+        return redirect(url_for("login"))
+
     mongo.db.recipe.remove({"_id": ObjectId(recipe_id)})
     flash("Recipe Successfully Deleted")
     return redirect(url_for("allrecipes"))
 
 @app.route("/myrecipes")
 def myrecipes():
-    if session["user"]:
+    if is_authenticated():
         recipes = list(mongo.db.recipe.find())
         return render_template('myrecipes.html', recipes=recipes)
     
@@ -181,6 +206,11 @@ def myrecipes():
 
 @app.route("/winner", methods=["GET", "POST"])
 def winner():
+    # if user is not authenticated they cant access winner page
+    if not is_authenticated():
+        return redirect(url_for('login'))
+    
+    # if user is not admin they cant access winner page
     if request.method == "POST":
         winner_recipe = mongo.db.recipe.find_one({"recipe_name": request.form.get("winner")})
         # Check if winner collection is empty
@@ -196,6 +226,13 @@ def winner():
     recipes = list(mongo.db.recipe.find())
     return render_template("winner.html", recipes=recipes)
 
+
+def is_authenticated():
+    return 'user' in session
+
+
+def is_user_owner_of(recipe):
+    return recipe['author'] == session['user']
 
 
 if __name__ == "__main__":
