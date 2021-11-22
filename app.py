@@ -159,7 +159,11 @@ def edit_recipe(recipe_id):
     if not is_authenticated():
         return redirect(url_for("login"))
 
-    recipe = mongo.db.recipe.find_one({"_id": ObjectId(recipe_id)})
+    # if user is not owner of recipe (incl admin) shouldnt be able to edit recipe
+    recipe = mongo.db.recipe.find_one({"_id":ObjectId(recipe_id)})
+    if not is_user_owner_of(recipe):
+        return redirect(url_for('allrecipes'))
+
     if "recipe_image" in request.files:
         recipe_image = request.files['recipe_image']
         if bool(recipe_image):
@@ -188,13 +192,19 @@ def edit_recipe(recipe_id):
 
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
+    recipe = mongo.db.recipe.find_one({"_id":ObjectId(recipe_id)})
     # if user is not authenticated they shouldnt be able to delete recipes
     if not is_authenticated():
         return redirect(url_for("login"))
 
-    mongo.db.recipe.remove({"_id": ObjectId(recipe_id)})
-    flash("Recipe Successfully Deleted")
+    # If user is not owner of recipe or the admin they shouldnt be able to delete recipes
+    if is_user_owner_of(recipe) or session['user'] == "admin@recipeclub.com":
+        mongo.db.recipe.remove({"_id": ObjectId(recipe_id)})
+        flash("Recipe Successfully Deleted")
+        return redirect(url_for("allrecipes"))
+    
     return redirect(url_for("allrecipes"))
+
 
 @app.route("/myrecipes")
 def myrecipes():
