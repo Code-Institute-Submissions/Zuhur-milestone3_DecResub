@@ -11,10 +11,10 @@
                     <input type="text" class="form-control" id="recipe_name" name="recipe_name" placeholder="Recipe Name" required>
                 </div>
                 <!-- Prep Time -->
-                <div class="form-row align-items-center">
+                <div class="form-row align-items-end">
                     <div class="form-group col-6">
-                        <label class="sr-only" for="prep_time">Prep Time</label>
-                        <input type="number" class="form-control" id="prep_time" name="prep_time" min="0" max="1000" placeholder="Enter prep time" step="0.1" required>
+                        <label for="prep_time">Prep Time</label>
+                        <input type="number" class="form-control" id="prep_time" name="prep_time" min="1" max="1000" placeholder="Enter prep time" required>
                     </div>
                     <div class="form-group col-6">
                         <div class="form-check form-check-inline">
@@ -32,10 +32,10 @@
                     </div>
                 </div>
                 <!-- Cook Time -->
-                <div class="form-row align-items-center">
+                <div class="form-row align-items-end">
                     <div class="form-group col-6">
-                        <label class="sr-only" for="cook_time">Cook Time</label>
-                        <input type="number" class="form-control" id="cook_time" name="cook_time" min="0" max="1000" placeholder="Enter cook time" step="0.1" required>
+                        <label for="cook_time">Cook Time</label>
+                        <input type="number" class="form-control" id="cook_time" name="cook_time" min="1" max="1000" placeholder="Enter cook time" required>
                     </div>
                     <div class="form-group col-6">
                         <div class="form-check form-check-inline">
@@ -54,10 +54,9 @@
                 </div>
                 <!-- Serves -->
                 <div class="form-group">
-                    <label class="sr-only" for="recipe_name">Serves</label>
+                    <label for="recipe_name">Serves</label>
                     <input type="number" min="1" max="1000" class="form-control" id="serves" name="serves" placeholder="Serves" required>
                 </div>
-
 
                 <!-- Ingredients -->
                 <div class="form-group">    
