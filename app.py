@@ -220,6 +220,10 @@ def winner():
     if not is_authenticated():
         return redirect(url_for('login'))
     
+    # if user is not the admin redirect to index page
+    if session['user'] != 'admin@recipeclub.com':
+        return redirect(url_for('index'))
+    
     # if user is not admin they cant access winner page
     if request.method == "POST":
         winner_recipe = mongo.db.recipe.find_one({"recipe_name": request.form.get("winner")})
