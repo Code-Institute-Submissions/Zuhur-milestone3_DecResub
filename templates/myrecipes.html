@@ -14,7 +14,7 @@
                                 {% if recipe.recipe_image != "" %}
                                     <img class="card-img-top" src=" {{ url_for('img_file', filename=recipe.recipe_image) }}" alt="Recipe image">
                                 {% else %}
-                                    <img class="card-img-top" src=" {{ url_for('static', filename='images/no-image-icon-23485.png') }}" alt="Recipe image">
+                                    <img class="card-img-top" src=" {{ url_for('static', filename='images/empty-plate.jpg') }}" alt="Recipe image">
                                 {% endif %}
                                 <div class="card-body text-center">
                                     <h5 class="card-title"> {{ recipe.recipe_name.capitalize() }} </h5>
