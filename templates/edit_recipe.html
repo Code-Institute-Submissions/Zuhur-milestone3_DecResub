@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block title%}
+    RecipeClub | Edit recipe
+{% endblock %}
+
 {% block content%}
     <div class="card create-card page">
         <h1 class="text-center">Edit Recipe</h1>
@@ -14,32 +18,32 @@
                 <div class="form-row align-items-end">
                     <div class="form-group col-6">
                         <label for="prep_time">Prep Time</label>
-                        <input type="number" value={{ recipe.prep_time }} class="form-control" id="prep_time" name="prep_time" min="1" max="1000" placeholder="Enter prep time" required>
+                        <input type="number" value={{ recipe.prep_time[0] }} class="form-control" id="prep_time" name="prep_time" min="1" max="1000" placeholder="Enter prep time" required>
                     </div>
                     <div class="form-group col-6">
                         <div class="form-check form-check-inline">
                             {% if recipe.prep_time.split(' ')[1] == "minutes" %}
-                                <input class="form-check-input" type="radio" id="min" name="prep_unit" value="minutes" checked>
+                                <input class="form-check-input" type="radio" id="prep_min" name="prep_unit" value="minutes" checked>
                             {% else %}
-                                <input class="form-check-input" type="radio" id="min" name="prep_unit" value="minutes">
+                                <input class="form-check-input" type="radio" id="prep_min" name="prep_unit" value="minutes">
                             {% endif %}
-                            <label class="form-check-label" for="min">Minutes</label>
+                            <label class="form-check-label" for="prep_min">Minutes</label>
                         </div>
                         <div class="form-check form-check-inline">
                             {% if recipe.prep_time.split(' ')[1] == "hours" %}
-                                <input class="form-check-input" type="radio" id="hrs" name="prep_unit" value="hours" checked>
+                                <input class="form-check-input" type="radio" id="prep_hrs" name="prep_unit" value="hours" checked>
                             {% else %}
-                                <input class="form-check-input" type="radio" id="hrs" name="prep_unit" value="hours">
+                                <input class="form-check-input" type="radio" id="prep_hrs" name="prep_unit" value="hours">
                             {% endif %}
-                            <label class="form-check-label" for="hrs">Hours</label>
+                            <label class="form-check-label" for="prep_hrs">Hours</label>
                         </div>
                         <div class="form-check form-check-inline">
                             {% if recipe.prep_time.split(' ')[1] == "days" %}
-                                <input class="form-check-input" type="radio" id="days" name="prep_unit" value="days" checked>
+                                <input class="form-check-input" type="radio" id="prep_days" name="prep_unit" value="days" checked>
                             {% else %}
-                                <input class="form-check-input" type="radio" id="days" name="prep_unit" value="days">
+                                <input class="form-check-input" type="radio" id="prep_days" name="prep_unit" value="days">
                             {% endif %}
-                            <label class="form-check-label" for="days">Day(s)</label>
+                            <label class="form-check-label" for="prep_days">Day(s)</label>
                         </div>
                     </div>
                 </div>
@@ -47,32 +51,32 @@
                 <div class="form-row align-items-end">
                     <div class="form-group col-6">
                         <label for="cook_time">Cook Time</label>
-                        <input type="number" class="form-control" value={{ recipe.cook_time }} id="cook_time" name="cook_time" min="1" max="1000" placeholder="Enter cook time" required>
+                        <input type="number" class="form-control" value={{ recipe.cook_time[0] }} id="cook_time" name="cook_time" min="1" max="1000" placeholder="Enter cook time" required>
                     </div>
                     <div class="form-group col-6">
                         <div class="form-check form-check-inline">
                             {% if recipe.cook_time.split(' ')[1] == "minutes" %}
-                                <input class="form-check-input" type="radio" id="min" name="cook_unit" value="minutes" checked>
+                                <input class="form-check-input" type="radio" id="cook_min" name="cook_unit" value="minutes" checked>
                             {% else %}
-                                <input class="form-check-input" type="radio" id="min" name="cook_unit" value="minutes">
+                                <input class="form-check-input" type="radio" id="cook_min" name="cook_unit" value="minutes">
                             {% endif %}
-                            <label class="form-check-label" for="min">Minutes</label>
+                            <label class="form-check-label" for="cook_min">Minutes</label>
                         </div>
                         <div class="form-check form-check-inline">
                             {% if recipe.cook_time.split(' ')[1] == "hours" %}
-                                <input class="form-check-input" type="radio" id="hrs" name="cook_unit" value="hours" checked>
+                                <input class="form-check-input" type="radio" id="cook_hrs" name="cook_unit" value="hours" checked>
                             {% else %}
-                                <input class="form-check-input" type="radio" id="hrs" name="cook_unit" value="hours">
+                                <input class="form-check-input" type="radio" id="cook_hrs" name="cook_unit" value="hours">
                             {% endif %}
-                            <label class="form-check-label" for="hrs">Hours</label>
+                            <label class="form-check-label" for="cook_hrs">Hours</label>
                         </div>
                         <div class="form-check form-check-inline">
                             {% if recipe.cook_time.split(' ')[1] == "days" %}
-                                <input class="form-check-input" type="radio" id="days" name="cook_unit" value="days" checked>
+                                <input class="form-check-input" type="radio" id="cook_days" name="cook_unit" value="days" checked>
                             {% else %}
-                                <input class="form-check-input" type="radio" id="days" name="cook_unit" value="days">
+                                <input class="form-check-input" type="radio" id="cook_days" name="cook_unit" value="days">
                             {% endif %}
-                            <label class="form-check-label" for="days">Day(s)</label>
+                            <label class="form-check-label" for="cook_days">Day(s)</label>
                         </div>
                     </div>
                 </div>
