@@ -1,49 +1,48 @@
 {% extends "base.html" %}
 
-{% block title%}
-    RecipeClub | LogIn
+{% block title %}
+    RecipeClub | Register
 {% endblock %}
 
 {% block content%}
-<div class="page">
-    <div class="form-box">
-        <h3 class="text-center">Register</h3>
-            <form method="post" action="{{ url_for('register') }}">
-                <!-- Name -->
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-info fa-fw"></i></span>
+    <div class="page">
+        <div class="form-box">
+            <h3 class="text-center">Register</h3>
+                <form method="post" action="{{ url_for('register') }}">
+                    <!-- Name -->
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1"><i class="fas fa-info fa-fw"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1" required>
                     </div>
-                    <input type="text" class="form-control" name="name" id="name" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1" required>
-                </div>
-                <!-- Email -->
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope fa-fw"></i></span>
+                    <!-- Email -->
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon2"><i class="fas fa-envelope fa-fw"></i></span>
+                        </div>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Email" aria-label="Email" aria-describedby="basic-addon2" maxlength="100" required>
                     </div>
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" maxlength="100" required>
-                </div>
-                <!-- Password -->
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock fa-fw"></i></span>
+                    <!-- Password -->
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon3"><i class="fas fa-lock fa-fw"></i></span>
+                        </div>
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Password" maxlength="20" minlength="6" aria-label="Password" aria-describedby="basic-addon3" required>
                     </div>
-                    <input type="password" class="form-control" name="password" id="password" placeholder="Password" maxlength="20" minlength="6" aria-label="Password" aria-describedby="basic-addon1" required>
-                </div>
-                <!-- Repeat Password -->
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock fa-fw"></i></span>
+                    <!-- Repeat Password -->
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon4"><i class="fas fa-lock fa-fw"></i></span>
+                        </div>
+                        <input type="password" class="form-control" name="repeat-password" id="repeat-password" placeholder="Repeat Password" aria-label="Password" aria-describedby="basic-addon4" required>
                     </div>
-                    <input type="password" class="form-control" name="repeat-password" id="repeat-password" placeholder="Repeat Password" aria-label="Password" aria-describedby="basic-addon1" required>
-                </div>
-                <!-- Register/Log In -->
-                <div class="login-register">
-                    <button class="btn btn-primary pl-4 pr-4" href="#" role="button">Register</button>
-                    <p>Already have an account?<a href=" {{ url_for('login') }}">Log In</a></p>
-                </div>
-            </form>
+                    <!-- Register/Log In -->
+                    <div class="login-register">
+                        <button class="btn btn-primary pl-4 pr-4">Register</button>
+                        <p>Already have an account?<a href=" {{ url_for('login') }}">Log In</a></p>
+                    </div>
+                </form>
+        </div>
     </div>
-</div>
-
 {% endblock %}
