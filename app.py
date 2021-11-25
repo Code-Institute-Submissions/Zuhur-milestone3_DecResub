@@ -276,4 +276,4 @@ def is_user_owner_of(recipe):
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=True)  # remove this at the end
+            debug=False)  # remove this at the end
