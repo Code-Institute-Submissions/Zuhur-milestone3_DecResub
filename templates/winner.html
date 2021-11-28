@@ -16,7 +16,9 @@
                     </div>
                     <select  name="winner" class="custom-select select-winner" id="inputGroupSelect01">
                         {% for recipe in recipes %}
+                            {% if not recipe.is_private %}
                             <option value= "{{ recipe.recipe_name }}" > {{recipe.recipe_name}} | {{recipe.author}} </option>
+                            {% endif %}
                         {% endfor %}
                     </select>
                 </div>
