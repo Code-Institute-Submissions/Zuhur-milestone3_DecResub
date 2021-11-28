@@ -71,7 +71,7 @@ Features differ between visitors, users and admin.
 
 **Visitors:** Minimal features available. They can access login and register page. <br>
 **Users:** Have access to the above features and all recipes, my recipes, create recipes, logout. They can also edit and delete their own recipes. <br>
-**Admin:** Have access to the above features and winners feature. Can also edit and delete all recipes. <br>
+**Admin:** Have access to the above features and winners feature. Can also delete any recipe. <br>
 
 ### Future features
 **Users:** Allow users to participate in voting for recipe of the month. <br>
