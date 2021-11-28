@@ -92,14 +92,60 @@ Features differ between visitors, users and admin.
 
 ## Testing
 [PEP8](http://pep8online.com/) was used to check python file, until file was pep8 compliant. <br>
-The HTML validator used was [https://validator.w3.org/](https://validator.w3.org/). Several errors caught due to jinja the other errors were corrected until no errors shown.<br>
+The HTML validator used was [https://validator.w3.org/](https://validator.w3.org/). Several errors caught due to jinja the other errors were corrected until no errors shown. <br>
 The CSS validator used was [https://jigsaw.w3.org/css-validator/validator]( https://jigsaw.w3.org/css-validator/validator). <br>
 Google devtools was used to make sure the site is responsive to different devices and screen sizes. <br>
 
 ### Manual Testing
-Navbar: All navlinks for users and admin where tested and making sure they worked and destination where correct. <br>
-Buttons: All buttons where manually tested to see if the worked. Delete and edit recipes where tested for admin and regular users, admin has access to edit and delete buttons while uses only have access to recipes they created. <br>
-Forms: All inputs were tested to see if any wrong enteries where caught i.e. not filling in required fields results in prompt message before submission allowed.
+#### Testing of user stories
+These are tests done on the project based on the user stories, to make sure all functionalities are tested. 
+
+**As an unregistered user I want to**
+1.	Be able to register to the website <br/>
+Both register buttons lead to the registration page successfully. 
+User must enter a name, email with the correct format, and a password with appropriate strength and confirm the password. Incorrectly filled section will prompt user to refill with correct input and entering mismatched password leads to a flash message guiding user to enter matching passwords.
+
+**As a registered User I want to**
+1.	Be able to log in <br/>
+**Test 1:** Does log in button work? <br/>
+**Result:** Log In button on the navigation bar successfully goes to the login page <br/>
+**Test 2:** Can a user log in? <br/>
+**Result:** User who enters an existing email/password will be logged in successfully. A user who writes an invalid email or password will be prompted to enter correct values. A wrong email/password will ask user to try again. <br/>
+
+2.	Be able to Create, View, Update and Delete recipes <br />
+**Test 1:** Does create link work? Can a user create recipe? <br />
+**Result:** Yes. all inputs work correctly and require user input. Cancel button redirects user to all recipes page. Delete button also functions and recipe can be deleted. Private recipes are only accessible to owner through ‘My recipes’ link. <br />
+**Test 2:** Does ‘Go to recipe’ link work? Can a user view their own recipes? <br/>
+**Result:** Yes. ‘My recipes’ button also works and shows user all their recipes. <br/>
+**Test 3:** Does Edit button work? Can a user edit their recipe? <br/>
+**Result:** Yes. User is directed to the ’Edit recipe’ page. The edit form is functional, cancel button and update button also work. <br/>
+**Test 4:** Does delete button work? <br/>
+**Result:** Yes. <br/>
+**Test 5:** Can admin delete/edit recipes? <br/>
+**Result:** Admin can only delete recipe not make edits. <br/>
+
+3.	Be able to share recipes while keeping some private <br/>
+**Test 1:** Can users have their recipes public/private? <br/>
+**Result:**  Yes. If user does not check the ‘private’ input, their recipe will be public. The user can edit their recipe and decide to make it private by checking the private box. <br/>
+
+**As the Admin I want to**
+1.	Post a ‘Recipe of the month’ to the home page <br/>
+**Test 1:** Does Winner link work? <br/>
+**Result:**  Yes. <br/>
+**Test 2:** Can Admin choose a user and recipe? <br/>
+**Result:** Yes, drop down shows all public recipes in the database along with the author email. <br/>
+
+2.	Be able to delete any users’ recipes <br/>
+**Test 1:** Does delete button work? <br/>
+**Result:** Yes.
+
+
+#### User authentication
+Testing has been carried out to make sure unauthenticated users can’t access all pages. Two functions were created to enforce user authentication. The function `def is_authenticated():
+    return 'user' in session
+`, checks if a user is authenticated by checking if a user is in session object, if not the user is directed to the login page.
+The second function `def is_user_owner_of(recipe):
+    return recipe['author'] == session['user']` authenticates if a user is the owner of a recipe. If a registered user tries to edit, delete a recipe other than theirs they are redirected to ‘All recipes’ page available to all authenticated users.
 
 ## Deployment
 
