@@ -152,7 +152,7 @@ The second function `def is_user_owner_of(recipe):
 ## Deployment
 
 ### To clone repository
-- Open this[https://github.com/Zuhur/milestone3] repository
+- Open [this](https://github.com/Zuhur/milestone3) repository
 - Select code in the following and clone using HTTPS or SSH
 - Select the working directory you would like the repo to be cloned
 - Type ‘git clone’ followed by URL decided above
