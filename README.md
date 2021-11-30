@@ -108,15 +108,15 @@ User must enter a name, email with the correct format, and a password with appro
 **As a registered User I want to**
 1.	Be able to log in <br/>
 **Test 1:** Does log in button work? <br/>
-**Result:** Log In button on the navigation bar successfully goes to the login page <br/>
+**Result:** Log In button on the navigation bar and bottom of home page successfully go to the login page <br/>
 **Test 2:** Can a user log in? <br/>
-**Result:** User who enters an existing email/password will be logged in successfully. A user who writes an invalid email or password will be prompted to enter correct values. A wrong email/password will ask user to try again. <br/>
+**Result:** User who enters an existing email/password will be logged in successfully. A user who writes an invalid email format or password will be prompted to enter correct values. A wrong email/password will ask user to try again. <br/>
 
 2.	Be able to Create, View, Update and Delete recipes <br />
 **Test 1:** Does create link work? Can a user create recipe? <br />
 **Result:** Yes. all inputs work correctly and require user input. Cancel button redirects user to all recipes page. Delete button also functions and recipe can be deleted. Private recipes are only accessible to owner through ‘My recipes’ link. <br />
 **Test 2:** Does ‘Go to recipe’ link work? Can a user view their own recipes? <br/>
-**Result:** Yes. ‘My recipes’ button also works and shows user all their recipes. <br/>
+**Result:** Yes. ‘My recipes’ link also works and shows user all their recipes. <br/>
 **Test 3:** Does Edit button work? Can a user edit their recipe? <br/>
 **Result:** Yes. User is directed to the ’Edit recipe’ page. The edit form is functional, cancel button and update button also work. <br/>
 **Test 4:** Does delete button work? <br/>
@@ -137,6 +137,8 @@ User must enter a name, email with the correct format, and a password with appro
 
 2.	Be able to delete any users’ recipes <br/>
 **Test 1:** Does delete button work? <br/>
+**Result:** Yes.
+**Test 2:** Is recipe deleted successfully <br/>
 **Result:** Yes.
 
 
