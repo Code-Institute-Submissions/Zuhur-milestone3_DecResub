@@ -151,20 +151,32 @@ The second function `def is_user_owner_of(recipe):
 
 ## Deployment
 
-- Create app.py file
-- Install flask <code> python -m pip install flask </code>
-- Create env.py file
-- Make sure env.py in gitignore file
-- Create requirements.txt file <code> python -m pip freeze > requirements.txt </code>
-- Create Procfile <code> echo web: python app.py > Procfile </code>
-- Install dnspython <code> python -m pip install flask </code>
-- Install flask-pymongo <br>
-To Heroku
-- Heroku can not read env.py files therefore the contents need to be manually input into config vars (via settings).
+### To clone repository
+- Open this[https://github.com/Zuhur/milestone3] repository
+- Select code in the following and clone using HTTPS or SSH
+- Select the working directory you would like the repo to be cloned
+- Type ‘git clone’ followed by URL decided above
+- Create an env.py file as shown below, while replacing values with password and the name of the database <br/>
+`import os` <br/>
+`  os.environ.setdefault("IP", "0.0.0.0")` <br/>
+`  os.environ.setdefault("PORT", "5000")` <br/>
+`  os.environ.setdefault("SECRET_KEY", <SECRETKEY>)` <br/>
+`  os.environ.setdefault("MONGO_URI", "mongodb+srv://zuhur:<PASSWORD>@milestones.wpely.mongodb.net/<DATABASE>?retryWrites=true&w=majority")` <br/>
+`  os.environ.setdefault("MONGO_DBNAME", <DATABASENAME>)` <br/>
+
+### To Heroku
+
+- Login / sign up to Heroku
+- Create a new app
+- Select unique app-name
+- Choose appropriate region
+- Heroku cannot read env.py files therefore the contents need to be manually input into config vars (via settings) 
+- Enter values in env.py into config vars
 - Push all code to GitHub
-- Enable automatic deployment to allow automatic update when code pushed to GitHub.
+- Enable automatic deployment to allow automatic update when code pushed to GitHub
 
 ## Credits
+
 ### Images
 Home page background: https://www.freepik.com/photos/background <br>
 Recipe
